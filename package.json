@@ -1,0 +1,56 @@
+{
+  "name": "homebrew-gui-hackathon",
+  "description": "GUI for homebrew usage",
+  "author": "HackIllionis",
+  "version": "0.0.1",
+  "private": false,
+  "proxy": "http://127.0.0.1:5000",
+  "dependencies": {
+    "cross-env": "7.0.0",
+    "electron-is-dev": "1.1.0",
+    "electron-log": "4.0.7",
+    "electron-reload": "1.5.0",
+    "prop-types": "15.7.2",
+    "react": "16.13.0",
+    "react-dom": "16.13.0",
+    "update-electron-app": "1.5.0",
+    "yarn": "1.22.0"
+  },
+  "devDependencies": {
+    "concurrently": "5.1.0",
+    "electron": "8.0.2",
+    "electron-builder": "22.3.2",
+    "prettier": "1.19.1",
+    "react-scripts": "3.4.0",
+    "wait-on": "4.0.1"
+  },
+  "build": {
+    "publish": {
+      "provider": "github"
+    }
+  },
+  "main": "public/electron.js",
+  "homepage": "./",
+  "scripts": {
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "release": "yarn react-build && electron-builder --publish=always",
+    "build": "yarn react-build && yarn electron-build",
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
